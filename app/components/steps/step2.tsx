@@ -12,7 +12,8 @@ interface Step2Props {
 export const Step2 = ({ nextStep, step }: Step2Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState('');
-
+  const isStep2 = step === 2;
+  
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -30,12 +31,12 @@ export const Step2 = ({ nextStep, step }: Step2Props) => {
       <form onSubmit={handleSubmit} className="space-y-4 mt-2 flex flex flex-col">
         <InputText
           placeholder='Codice fiscale'
-          disabled={!(step === 2)}
+          disabled={!(isStep2)}
           onChange={(e) => setInput(e.target.value)}
           value={input}
         />
         <div className='flex flex-col md:items-end sm:items-center'>
-          <button type="submit" disabled={isLoading} className="bg-blue-500 text-white py-2 px-4 rounded disabled:bg-gray-400 disabled:cursor-not-allowed">
+          <button type="submit" disabled={!input || isLoading || !isStep2} className="bg-blue-500 text-white py-2 px-4 rounded disabled:bg-gray-400 disabled:cursor-not-allowed">
             Next
           </button>
         </div>

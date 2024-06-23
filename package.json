@@ -2,7 +2,7 @@
   "name": "tech-interview-002",
   "version": "0.2.0",
   "scripts": {
-    "dev": "PORT=3100 next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
